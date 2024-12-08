@@ -1,0 +1,8 @@
+{
+  "label": "C++ - Code Docs",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Docs and info on how to use LilContext with C++"
+  }
+}
