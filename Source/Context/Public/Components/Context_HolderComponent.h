@@ -43,8 +43,7 @@ public:
 	UContext_HolderComponent();
 
 	// IContext_Holder interface BEGIN
-
-	virtual FGameplayTagContainer GetTags_Implementation() const override;
+	virtual void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const override;
 	
 	virtual FVector GetPosition_Implementation() const override;
 	
@@ -73,7 +72,9 @@ private:
 	UPROPERTY(VisibleAnywhere)
 	FString ContextPayloadFunctionPrefix = TEXT("GetPayload");
 
+#if WITH_EDITOR
 	virtual EDataValidationResult IsDataValid(FDataValidationContext& Context) const override;
+#endif
 
 	UFUNCTION(BlueprintCallable)
 	UFunction* GetFunctionForAction(const FString&  ActionName, FName& ExpectedFunctionName) const;

@@ -3,8 +3,6 @@
 
 #include "UI/Context_EntryButton.h"
 #include "Interface/Context_Holder.h"
-#include "CommonTextBlock.h"
-#include "Actions/Context_Action.h"
 #include "Actions/Context_ActionEntry.h"
 #include "Actions/Context_ActionSubsystem.h"
 
@@ -21,10 +19,10 @@ void UContext_EntryButton::Setup(AActor* Instigator, const UContext_ActionEntry*
 	ContextAction = ContextEntry;
 	InstigatingActor = Instigator;
 	ContextObject = ContextHolder;
-	OnButtonBaseClicked.AddDynamic(this, &UContext_EntryButton::ActionSelected);
+	//OnClicked.Add(this, &UContext_EntryButton::ActionSelected);
 }
 
-void UContext_EntryButton::ActionSelected(UCommonButtonBase* Button) {
+void UContext_EntryButton::ActionSelected() {
 	UContext_ActionSubsystem* ActionSubsystem = GetGameInstance()->GetSubsystem<UContext_ActionSubsystem>();
 	ActionSubsystem->ExecuteAction(ContextObject, ContextAction, InstigatingActor);
 	ActionSubsystem->HideContextMenu();

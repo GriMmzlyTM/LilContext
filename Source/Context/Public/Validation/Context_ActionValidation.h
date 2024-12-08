@@ -6,6 +6,8 @@
 #include "UObject/Object.h"
 #include "Context_ActionValidation.generated.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogContextValidation, Log, All);
+
 class UContext_ActionValidationResult;
 
 UENUM(BlueprintType)

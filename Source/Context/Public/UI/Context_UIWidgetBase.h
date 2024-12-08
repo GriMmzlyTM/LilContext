@@ -24,10 +24,10 @@ class CONTEXT_API UContext_UIWidgetBase : public UUserWidget, public IContext_Ho
 	UPROPERTY(EditAnywhere, meta = (AllowPrivateAccess = true), Category = "Context|UI")
 	FGameplayTagContainer DefaultTags;
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = true), Category = "Context|UI")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = true), Category = "Context|UI")
 	TSet<UContext_ActionEntry*> ContextEntries;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = true), Category = "Context|UI")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = true), Category = "Context|UI")
 	TArray<UContext_ActionEntry*> PrimaryContextEntryPriority;
 	
 private:
@@ -43,7 +43,8 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category="Context|UI|Tags")
 	void GiveTag(FGameplayTagContainer Tags);
-
+	
+	
 	/// Remove a tag from the UI element, which will enable or disable certain contexts
 	UFUNCTION(BlueprintCallable, Category="Context|UI|Tags")
 	void RemoveTag(FGameplayTagContainer Tags);
@@ -52,7 +53,10 @@ public:
 	void ClearTags();
 	
 	// ~IContext_Holder Implementation
-	virtual FGameplayTagContainer GetTags_Implementation() const override { return DefaultTags; }
+	
+	virtual void GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const override {
+		TagContainer = DefaultTags;
+	}
 	
 	virtual FVector GetPosition_Implementation() const override;
 	virtual TSet<UContext_ActionEntry*> GetActionEntries_Implementation() const override;
@@ -63,8 +67,11 @@ public:
 	// !IContext_Holder Implementation
 
 private:
+#if WITH_EDITOR
 	virtual EDataValidationResult IsDataValid(FDataValidationContext& Context) const override;
+#endif
 
 	UFUNCTION(BlueprintCallable)
 	UFunction* GetFunctionForAction(const FString&  ActionName, FName& ExpectedFunctionName) const;
+	
 };

@@ -41,10 +41,10 @@ void UContext_Menu::ShowMenuInternal(
 	// loop through object found
 	for (const auto [ContextHolder, ContextEntries] : ContextEntryPackage) {
 		for (const auto ContextEntry : ContextEntries) {
-			UContext_EntryButton* ContextEntryButtonInstance = CreateWidget<UContext_EntryButton>(this, EntryButtonTemplate);
-			ContextEntryButtonInstance->Setup(GetOwningPlayerPawn(), ContextEntry, ContextHolder);
-			ContextButtonContainer->AddChildToVerticalBox(ContextEntryButtonInstance);
-			ContextEntryButtons.Add(ContextEntryButtonInstance);	
+			//UContext_EntryButton* ContextEntryButtonInstance = CreateWidget<UContext_EntryButton>(this, EntryButtonTemplate);
+			//ContextEntryButtonInstance->Setup(GetOwningPlayerPawn(), ContextEntry, ContextHolder);
+			//ContextButtonContainer->AddChildToVerticalBox(ContextEntryButtonInstance);
+			//ContextEntryButtons.Add(ContextEntryButtonInstance);	
 		}
 	}
 	

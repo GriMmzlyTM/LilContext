@@ -3,25 +3,25 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "CommonButtonBase.h"
+#include "Components/Button.h"
+#include "Components/TextBlock.h"
 #include "Context_EntryButton.generated.h"
 
 class UContext_Action;
 class IContext_Holder;
-class UCommonTextBlock;
 class UContext_ActionEntry;
 /**
  * A usable button that serves as the UI representation of a context entry, linked to an entity.
  */
 UCLASS()
-class CONTEXT_API UContext_EntryButton : public UCommonButtonBase {
+class CONTEXT_API UContext_EntryButton : public UButton {
 	GENERATED_BODY()
 	
 	UPROPERTY(meta=(BindWidget))
-	TWeakObjectPtr<UCommonTextBlock> ContextActionName;
+	TWeakObjectPtr<UTextBlock> ContextActionName;
 
 	UPROPERTY(meta=(BindWidget))
-	TWeakObjectPtr<UCommonTextBlock> ContextEntityName;
+	TWeakObjectPtr<UTextBlock> ContextEntityName;
 
 	UPROPERTY()
 	const UContext_ActionEntry* ContextAction;
@@ -39,5 +39,5 @@ public:
 private:
 
 	UFUNCTION()
-	void ActionSelected(UCommonButtonBase* Button);
+	void ActionSelected();
 };

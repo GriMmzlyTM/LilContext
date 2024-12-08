@@ -140,6 +140,7 @@ UFunction* UContext_UIWidgetBase::GetFunctionForAction(const FString& ActionName
 	return FunctionForAction;
 }
 
+#if WITH_EDITOR
 EDataValidationResult UContext_UIWidgetBase::IsDataValid(FDataValidationContext& Context) const {
 	////////////
 	//// Validate all context entries
@@ -194,3 +195,4 @@ EDataValidationResult UContext_UIWidgetBase::IsDataValid(FDataValidationContext&
 	
 	return Context.GetNumErrors() > 0 ? EDataValidationResult::Invalid : BaseResult;
 }
+#endif

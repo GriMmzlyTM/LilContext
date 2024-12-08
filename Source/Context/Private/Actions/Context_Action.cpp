@@ -40,6 +40,7 @@ UWorld* UContext_Action::GetWorld() const {
 void UContext_Action::CommitPayload(const UContext_ActionPayloadBase* Payload) {
 }
 
+#if WITH_EDITOR
 EDataValidationResult UContext_Action::IsDataValid(FDataValidationContext& Context) const {
 	const EDataValidationResult BaseResult = UObject::IsDataValid(Context);
 	
@@ -49,3 +50,4 @@ EDataValidationResult UContext_Action::IsDataValid(FDataValidationContext& Conte
 
 	return Context.GetNumErrors() > 0 ? EDataValidationResult::Invalid : BaseResult;
 }
+#endif

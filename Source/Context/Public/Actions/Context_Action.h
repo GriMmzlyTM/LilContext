@@ -78,5 +78,7 @@ public:
 	void CommitPayload(const UContext_ActionPayloadBase* Payload);
 	
 private:
+#if WITH_EDITOR
 	virtual EDataValidationResult IsDataValid(FDataValidationContext& Context) const override;
+#endif
 };

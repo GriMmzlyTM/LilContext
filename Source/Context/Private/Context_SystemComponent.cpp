@@ -18,7 +18,6 @@ UContext_SystemComponent::UContext_SystemComponent() {
 
 void UContext_SystemComponent::BeginPlay() {
 	Super::BeginPlay();
-
 	ensure(OpenContextInputAction);
 	ensure(CloseContextInputAction);
 	ensure(ContextMenuTemplate);
@@ -38,11 +37,11 @@ void UContext_SystemComponent::BeginPlay() {
 		EnhancedInputComp->BindAction(OpenContextInputAction, ETriggerEvent::Completed, this, &UContext_SystemComponent::OpenContextMenu);
 		EnhancedInputComp->BindAction(CloseContextInputAction, ETriggerEvent::Completed, ActionSubsystem, &UContext_ActionSubsystem::HideUnfocusedContextMenu);
 
-		UContext_Menu* ContextMenu = CreateWidget<UContext_Menu>(GetWorld(), ContextMenuTemplate);
-		ContextMenu->AddToViewport();
-		ContextMenu->HideMenu();
+		// UContext_Menu* ContextMenu = CreateWidget<UContext_Menu>(GetWorld(), ContextMenuTemplate);
+		// ContextMenu->AddToViewport();
+		// ContextMenu->HideMenu();
 
-		ActionSubsystem->SetContextMenuInstance(ContextMenu);
+		//ActionSubsystem->SetContextMenuInstance(ContextMenu);
 		ActionSubsystem->EnableContextSource(EContext_ContextSource::World);
 		ActionSubsystem->EnableContextSource(EContext_ContextSource::UI);
 	}

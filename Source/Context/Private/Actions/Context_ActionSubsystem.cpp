@@ -102,7 +102,9 @@ bool UContext_ActionSubsystem::CanExecuteEntry(
 	}
 	
 	// If tags don't match (Similarly to abilities in gas) then the entry cannot be executed
-	const FGameplayTagContainer Tags = IContext_Holder::Execute_GetTags(ContextHolder);
+	FGameplayTagContainer Tags;
+	Cast<IContext_Holder>(ContextHolder)->GetOwnedGameplayTags(Tags);
+	
 	if (Tags.HasAny(Entry->BlockingTags) || !Tags.HasAllExact(Entry->RequiredTags)) {
 		return false;
 	}

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagAssetInterface.h"
 #include "GameplayTagContainer.h"
 #include "UObject/Interface.h"
 #include "Context_Holder.generated.h"
@@ -22,16 +23,11 @@ class CONTEXT_API UContext_Holder : public UInterface {
  *
  * This entity will receive context entries from its parents that implement the Giver interface
  */
-class CONTEXT_API IContext_Holder {
+class CONTEXT_API IContext_Holder: public IGameplayTagAssetInterface {
 	GENERATED_BODY()
 
 public:
-	/**
-	 * Gets the tags the entity has, which is useful for determining if the holder can execute an action 
-	 */
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Context|Holder|Info")
-	FGameplayTagContainer GetTags() const;
-	
+
 	/**
 	 * Get the display name for this entity
 	 */

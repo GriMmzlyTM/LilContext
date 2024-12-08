@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Actions/Context_ActionSubsystem.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Button.h"
 #include "Context_Menu.generated.h"
 
 class UVerticalBox;
@@ -32,7 +33,7 @@ class CONTEXT_API UContext_Menu : public UUserWidget {
 	bool bShouldBeStaticOnScreen = false;
 	
 	UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess=true), Category = "Context|Setup")
-	TSubclassOf<UCommonButtonBase> EntryButtonTemplate;
+	TSubclassOf<UButton> EntryButtonTemplate;
 
 	/// widget elements
 	

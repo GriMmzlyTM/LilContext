@@ -17,7 +17,7 @@ UContext_HolderComponent::UContext_HolderComponent() {
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-FGameplayTagContainer UContext_HolderComponent::GetTags_Implementation() const {
+void UContext_HolderComponent::GetOwnedGameplayTags(FGameplayTagContainer& TagContainer) const {
 
 	FGameplayTagContainer OwnedTags;
 	
@@ -31,7 +31,7 @@ FGameplayTagContainer UContext_HolderComponent::GetTags_Implementation() const {
 		OwnedTags.AppendTags(DefaultTags);
 	}
 	
-	return OwnedTags;
+	TagContainer = OwnedTags;
 }
 
 FVector UContext_HolderComponent::GetPosition_Implementation() const {
@@ -106,6 +106,7 @@ void UContext_HolderComponent::BeginPlay() {
 	
 }
 
+#if WITH_EDITOR
 EDataValidationResult UContext_HolderComponent::IsDataValid(FDataValidationContext& Context) const {
 	const EDataValidationResult BaseResult = Super::IsDataValid(Context);
 
@@ -167,6 +168,7 @@ EDataValidationResult UContext_HolderComponent::IsDataValid(FDataValidationConte
 	return Context.GetNumErrors() > 0 ? EDataValidationResult::Invalid : BaseResult;
 	
 }
+#endif
 
 UFunction* UContext_HolderComponent::GetFunctionForAction(const FString& ActionName, FName& ExpectedFunctionName) const {
 
